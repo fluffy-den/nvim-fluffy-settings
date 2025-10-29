@@ -1,18 +1,22 @@
+--- Ayu Theme with transparent background
 return {
-  -- Configure ayu theme
   {
     "Shatur/neovim-ayu",
     name = "ayu",
     priority = 1000,
     opts = {
+      terminal = true,
+      mirage = true,
       overrides = {
-        -- Make background transparent
-        Normal = { bg = "NONE" },
-        NormalFloat = { bg = "NONE" },
-        SignColumn = { bg = "NONE" },
-        NeoTreeNormal = { bg = "NONE" },
-        NeoTreeNormalNC = { bg = "NONE" },
-        -- Add more UI elements that need transparency here
+        Normal = { bg = "None" },
+        NormalFloat = { bg = "None" },
+        ColorColumn = { bg = "None" },
+        SignColumn = { bg = "None" },
+        Folded = { bg = "None" },
+        FoldColumn = { bg = "None" },
+        CursorLine = { bg = "None" },
+        CursorColumn = { bg = "None" },
+        VertSplit = { bg = "None" },
       },
     },
     config = function(_, opts)
@@ -21,7 +25,6 @@ return {
     end,
   },
 
-  -- Set up LazyVim to use ayu
   {
     "LazyVim/LazyVim",
     opts = {
