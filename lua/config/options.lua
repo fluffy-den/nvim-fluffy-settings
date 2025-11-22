@@ -5,6 +5,16 @@
 -- Set up global options
 local opt = vim.opt
 
+-- leaders key
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+-- Ignore perl and ruby providers
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
+
+vim.env.PATH = vim.env.PATH .. ":" .. "/usr/bin"
+
 -- Set PowerShell as the shell on Windows only
 if vim.fn.has("win32") == 1 then
   opt.shell = "pwsh"

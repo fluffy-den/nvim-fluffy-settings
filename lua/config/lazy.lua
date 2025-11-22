@@ -21,12 +21,31 @@ require("lazy").setup({
     -- import/override with your plugins
     { import = "plugins" },
   },
-  install = { colorscheme = { "ayu-theme" } },
   checker = { enabled = true },
 })
 
-require("lualine").setup({ options = { theme = "eyes" } })
+-- load the color scheme (tinted)
+require("tinted-colorscheme").setup("base16-ayu-dark")
 
--- leaders key
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+-- light grey comments (including treesitter)
+vim.api.nvim_set_hl(0, "Comment", { fg = "#888888", bg = "NONE" })
+vim.api.nvim_set_hl(0, "@comment", { fg = "#888888", bg = "NONE" })
+
+-- clear all backgrounds
+vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "NormalNC", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "FloatBorder", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "LineNr", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "Folded", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "FoldColumn", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "StatusLine", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "VertSplit", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "WinSeparator", { bg = "NONE" })
+
+-- lualine setup
+require("lualine").setup({ options = { theme = "auto" } })
