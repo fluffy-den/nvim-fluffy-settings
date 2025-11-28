@@ -24,8 +24,13 @@ require("lazy").setup({
   checker = { enabled = true },
 })
 
+-- set file line number to be absolute
+vim.opt.relativenumber = false
+vim.opt.number = true
+
 -- load the color scheme (tinted)
-require("tinted-colorscheme").setup("base16-ayu-dark")
+---@diagnostic disable-next-line: missing-parameter
+require("tinted-colorscheme").setup("base24-ayu-mirage")
 
 -- light grey comments (including treesitter)
 vim.api.nvim_set_hl(0, "Comment", { fg = "#888888", bg = "NONE" })
