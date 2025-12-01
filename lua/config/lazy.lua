@@ -28,6 +28,9 @@ require("lazy").setup({
 vim.opt.relativenumber = false
 vim.opt.number = true
 
+-- activate copilot lsp
+vim.lsp.enable("copilot-language-server")
+
 -- load the color scheme (tinted)
 ---@diagnostic disable-next-line: missing-parameter
 require("tinted-colorscheme").setup("base24-ayu-mirage")
