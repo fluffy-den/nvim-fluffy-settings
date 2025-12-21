@@ -28,6 +28,9 @@ require("lazy").setup({
 vim.opt.relativenumber = false
 vim.opt.number = true
 
+-- set clipboard to use system clipboard
+vim.opt.clipboard = "unnamedplus"
+
 -- activate copilot lsp
 vim.lsp.enable("copilot-language-server")
 
