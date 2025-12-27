@@ -28,15 +28,36 @@ require("lazy").setup({
 vim.opt.relativenumber = false
 vim.opt.number = true
 
+-- soft wrap lines
+vim.opt.wrap = true
+vim.opt.linebreak = true
+vim.opt.breakindent = true
+vim.opt.showbreak = "↪ "
+
 -- set clipboard to use system clipboard
 vim.opt.clipboard = "unnamedplus"
 
 -- activate copilot lsp
-vim.lsp.enable("copilot-language-server")
+local copilot_ok, copilot = pcall(require, "copilot")
+if copilot_ok and copilot.setup then
+  copilot.setup({})
+end
 
 -- load the color scheme (tinted)
----@diagnostic disable-next-line: missing-parameter
-require("tinted-colorscheme").setup("base24-ayu-mirage")
+local tinted_ok, tint = pcall(require, "tinted-colorscheme")
+if tinted_ok and tint.setup then
+  tint.setup("base24-ayu-mirage", {
+    tinting = {
+      enabled = true,
+      tint = -15,
+      saturation = 0.6,
+    },
+    highlight_groups = {
+      CursorLine = { link = "TintedCursorLine" },
+      Visual = { link = "TintedVisual" },
+    },
+  })
+end
 
 -- light grey comments (including treesitter)
 vim.api.nvim_set_hl(0, "Comment", { fg = "#888888", bg = "NONE" })
