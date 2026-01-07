@@ -24,6 +24,30 @@ require("lazy").setup({
   checker = { enabled = true },
 })
 
+-- activate copilot lsp
+local ok, copilot = pcall(require, "copilot")
+if ok and copilot.setup then
+  copilot.setup({})
+end
+
+-- load the color scheme (tinted)
+---@diagnostic disable-next-line: missing-parameter
+require("tinted-colorscheme").setup("base24-ayu-mirage")
+
+-- light grey comments (including treesitter)
+vim.api.nvim_set_hl(0, "Comment", { fg = "#888888", bg = "NONE" })
+vim.api.nvim_set_hl(0, "@comment", { fg = "#888888", bg = "NONE" })
+
+-- clear all backgrounds
+vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
+
+-- lualine setup
+require("lualine").setup({ options = { theme = "auto" } })
+
+-- Configure options before loading plugins
+-- set clipboard to use system clipboard
+vim.opt.clipboard = "unnamedplus"
+
 -- set file line number to be absolute
 vim.opt.relativenumber = false
 vim.opt.number = true
@@ -33,51 +57,3 @@ vim.opt.wrap = true
 vim.opt.linebreak = true
 vim.opt.breakindent = true
 vim.opt.showbreak = "↪ "
-
--- set clipboard to use system clipboard
-vim.opt.clipboard = "unnamedplus"
-
--- activate copilot lsp
-local copilot_ok, copilot = pcall(require, "copilot")
-if copilot_ok and copilot.setup then
-  copilot.setup({})
-end
-
--- load the color scheme (tinted)
-local tinted_ok, tint = pcall(require, "tinted-colorscheme")
-if tinted_ok and tint.setup then
-  tint.setup("base24-ayu-mirage", {
-    tinting = {
-      enabled = true,
-      tint = -15,
-      saturation = 0.6,
-    },
-    highlight_groups = {
-      CursorLine = { link = "TintedCursorLine" },
-      Visual = { link = "TintedVisual" },
-    },
-  })
-end
-
--- light grey comments (including treesitter)
-vim.api.nvim_set_hl(0, "Comment", { fg = "#888888", bg = "NONE" })
-vim.api.nvim_set_hl(0, "@comment", { fg = "#888888", bg = "NONE" })
-
--- clear all backgrounds
-vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
-vim.api.nvim_set_hl(0, "NormalNC", { bg = "NONE" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
-vim.api.nvim_set_hl(0, "FloatBorder", { bg = "NONE" })
-vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE" })
-vim.api.nvim_set_hl(0, "LineNr", { bg = "NONE" })
-vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "NONE" })
-vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "NONE" })
-vim.api.nvim_set_hl(0, "Folded", { bg = "NONE" })
-vim.api.nvim_set_hl(0, "FoldColumn", { bg = "NONE" })
-vim.api.nvim_set_hl(0, "StatusLine", { bg = "NONE" })
-vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "NONE" })
-vim.api.nvim_set_hl(0, "VertSplit", { bg = "NONE" })
-vim.api.nvim_set_hl(0, "WinSeparator", { bg = "NONE" })
-
--- lualine setup
-require("lualine").setup({ options = { theme = "auto" } })
