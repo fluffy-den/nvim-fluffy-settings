@@ -40,8 +40,8 @@ end
 -- prefer the newer 'tinted-schemes' on Neovim 0.12+
 vim.opt.termguicolors = true
 
--- Apply base24-ayu-mirage colorscheme
-vim.cmd("colorscheme base24-ayu-mirage")
+-- lualine setup
+require("lualine").setup({ options = { theme = "auto" } })
 
 -- light grey comments (including treesitter)
 vim.api.nvim_set_hl(0, "Comment", { fg = "#888888", bg = "NONE" })
@@ -76,8 +76,6 @@ vim.api.nvim_set_hl(0, "NvimTreeNormal", { bg = "NONE" })
 -- light grey comments (including treesitter)
 vim.api.nvim_set_hl(0, "Comment", { fg = "#888888", bg = "NONE" })
 vim.api.nvim_set_hl(0, "@comment", { fg = "#888888", bg = "NONE" })
--- lualine setup
-require("lualine").setup({ options = { theme = "auto" } })
 
 -- Configure options before loading plugins
 -- set clipboard to use system clipboard
